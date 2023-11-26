@@ -1,0 +1,63 @@
+//311CA_Bobocu_Alexandra-Florentina
+Problema 1
+Daca in total am mai putin de 3 copaci (doar unul sau 2 copaci), executia
+programului nu are rost, deci le atribui lui xmax_impar si xmin_par valoarea 0.
+Cum S si m_a sunt initializate cu 0, se vor afisa ca atare. Am incheiat
+problema.
+Daca avem cel putin 2 copaci, continui algoritmul. Citesc valorile inaltimilor,
+formand secvente de cate 3 copaci: prin atribuiri, valoarea citita in variabila
+x3 ce desemneaza inaltimea ultimului copac ajunge pe rand in variabilele x1 si
+x2 ale inaltimilor primului copac, respectiv celui din mijloc. Compar inaltimea
+copacului din mijloc cu cea a vecinilor si verific cele 2 conditii care imi
+asigura ca acel copac este special. Daca se respecta conditiile, adun valoarea
+inaltimii copacului la S, calculand simultan numarul de copaci speciali. Dupa
+ce am citit toti copacii, cu valorile retinute de S si nr_special, calculez
+media. Daca nu avem niciun copac special, nr_special = 0 si cum impartirea la 0
+nu este posibila, incarc variabila m_a cu -1. Automat atribui valoarea -1 lui S
+si lui xmin_par. Am initializat la inceput xmax_impar cu -1, atat pentru
+eventualitatea negasirii unui copac special, cat si pentru calculul efectiv al
+inaltimii maxime.
+
+Problema 2
+Sortez crescator vectorul care contine cifrele lui n. Construiesc alti 2
+vectori, pe care ii initializez cu 0: n_crescator[] si n_descrescator[]-retin
+cifrele lui n in ordine crescatoare, respectiv descrescatoare. Pe baza acestor
+vectori, voi forma cel mai mare, respectiv cel mai mic numar ce se pot obtine
+din cifrele numarului curent n: nr1 si nr2. La numarul cel mic, am grija ca
+acesta sa nu inceapa cu 0. Tratez separat cazul cand n are doar o cifra. Retin
+rezultatele obtinute in urma scaderilor intr-un vector secv[], de dimensiune x.
+++x imi asigura trecerea in instructiunea if, unde este apelata functia
+gasire_element. Ajunsa aici, verific pe rand daca la un moment dat gasesc
+rezultate obtinute in urma scaderilor care ar coincide, caz in care secventa de
+numere s-ar termina, deoarece am gasi elemente care se repeta. Continui
+operatiunile pana cand ok isi schimba starea din 1 in 0.
+
+Problema 3
+Calculez pentru fiecare materie la care studentul are mai putin de 10 cat de
+mult poate sa mai obtina la marire. Aceste valori le pun intr-un vector pe care
+il sortez crescator. Scad din dif (cat ii mai trebuie ca sa treaca) valorile
+cele mai mari din nota[], incrementand m (numarul minim de materii la care ar
+trebui sa mearga la marire). Calculez numarul notelor de 10 pe
+care le are studentul, iar daca acest numar coincide cu numarul materiilor,
+afisez -1, studentul neavand nevoie de marire.
+
+Problema 4
+Pentru fiecare linie, verific daca am atatea grupuri de 1 de cat imi indica
+oriz[i][0](cate grupuri am pe linia i) si daca in fiecare grup am cati de 1 am
+nevoie astfel incat sa fie puzzle-ul corect completat, adica daca se respecta
+numarul oriz[i][k]. secv_unit retine cati de 1 am in grup, iar k retine la al
+catelea grup sunt. Verific daca in puzzle gasesc casute colorate. In caz
+afirmativ, incrementez numarul de 1-uri intalnite in matrice, urmand sa verific
+daca acest numar secv_unit depaseste restrictia de casute colorate de pe linie.
+Daca in puzzle am gasit casuta alba si am avut casute colorate anterior,
+verific daca secv_unit respecta conditia de lungime a grupului k respectiv si
+incrementez numarul grupului, iar numarul de casute colorate il restez la 0.
+Daca o linie se termina cu 1, cresc in prealabil numarul de grupuri si verific
+daca numarul de casute colorate este cel din ultimul grup. Verific daca numarul
+de grupuri retinute in variabila k coincide cu cel dat in restrictiile pentru
+linii. Functia de verificare a coloanelor este similara cu functia de
+verificare a liniilor descrisa anterior, verificand de aceasta data conditiile
+parcurgand fiecare coloana si verificand daca am atatea grupuri de 1 de cat imi
+indica vert[j][0] si daca in fiecare grup am cati de 1 imi indica vert[j][k].
+Pentru fiecare puzzle, folosesc variabilele ok_oriz si ok_vert, pentru care
+valoarea 1 inseamna respectarea restrictiilor atat pe linii, cat si pe coloane.

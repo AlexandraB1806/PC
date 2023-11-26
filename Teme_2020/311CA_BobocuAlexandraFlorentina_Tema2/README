@@ -1,0 +1,62 @@
+//311CA_Bobocu_Alexandra-Florentina
+
+Task 1
+Aloc dinamic vectorul de dimensiuni si matricea. Pointerul catre char imparte
+numerele intregi scrise sub forma hexazecimala in grupuri de cate 
+4 = sizeof(int) cifre astfel incat sa nu ma refer din punct de vedere logic la
+ansamblul de 4 bytes, ci la fiecare byte in parte. Pentru marginile superioara
+si inferioara, adun fiecare 4 bytes din fiecare element de pe prima si ultima
+linie din matrice si maresc contorul cu 4. Pentru marginea din stanga, adun
+primul byte din cele mai din stanga elemente, adica primul byte din elementele
+de pe coloana 0, care nu se afla pe marginea superioara. Pentru marginea din
+dreapta, adun ultimul byte din cele mai din dreapta elemente, care nu se afla
+pe marginea superioara sau inferioara. Calculez media.
+
+Task 2
+1. In functia modificare, sparg 2 numere in bytes: numarul curent, pentru a
+selecta byte-ul de inlocuit si noul numar citit, pentru a selecta byte-ul cu
+care urmeaza sa fac inlocuirea. Pentru fiecare tip de date in parte, verific
+daca operatia se face in afara dimensiunii disponibile a matricei, caz in care
+aloc memorie si umplu ce am alocat in plus cu 0.
+Pentru tipul short, tratez cazul in care indexul portiunii de date este
+multiplu de 2, pentru a sti in cadrul carui int ma pozitionez. Dupa ce impart
+numarul citit in 2 shorturi, aleg ultimul short din int si fac modificarea pe
+shortul care trebuie, tot in functie de paritate.
+Pentru tipul char, analog cu tipul de data anterior, tratez separat cazul in
+care indexul portiunii de date este multiplu de 4. Impart numarul citit in 4
+charuri, aleg ultimul char din int si fac modificarea corespunzatoare.
+
+2. In functia interschimbare:
+	-int: Sparg numarul de pe pozitia indicata de index in bytes pe care ii
+inversez intre ei.
+	-short: Aleg shortul din int in care fac operatia de interschimbare.
+Shortul ales il sparg ulterior in 2 bytes, urmand sa ii interschimb.
+	-char: Nu se intampla nimic, practic l-am interschimba cu el insusi.
+
+3. In functia stergere:
+	-int: Ma leg la elementul din matrice pe care vreau sa il sterg si il fac
+zero.
+	-short: Afland catul impartirii la 2, stiu in care int se afla shortul pe
+care vreau sa il sterg. Tratez cazul cu multiplu de 2. Prin aflarea restului la
+impartirea cu 2, aflu pe ce pozitie in int este charul, pe care byte este mai
+exact.
+	-char: Afland catul impartirii la 4, stiu in care int se afla charul pe
+care vreau sa il sterg. Tratez cazul cu multiplu de 4. Prin aflarea restului la
+impartirea cu 4, aflu pe ce pozitie in int este charul, determinand cu precizie
+byteul.
+
+Task 3
+Creez o noua matrice alocata dinamic de tip char, de 4 ori mai mare ca
+dimensiune decat cea de tip int obtinuta dupa modificari, care sa imi retina
+bytesii extrasi cu ajutorul unui pointer la char din matricea de tip int.
+Parcurg noua matrice de charuri si apelez functia smasiv de fiecare data
+cand intalnesc un zero. Intr-un alt vector alocat dinamic, retin care este
+supermasivitatea fiecarei suprafete din zonele ce contin 0. Aloc memorie in
+plus in vectorul v daca este necesar.
+In functia smasiv, daca nu ies din dimensiunile matricei, verific daca
+elementul curent este 0. In caz afirmativ, ii atribui o alta valoare pentru a
+nu mai trece din nou prin el, actualizez in vector marimea suprafetei si apelez
+functia de 4 ori, deoarece suprafata se poate extinde in 4 directii posibile.
+Inainte sa apelez functia, verific coordonatele pe care ma mut. Dupa ce termin
+o suprafata de parcurs, cercetez daca marimea ei este cea mai mare de pana la
+acel moment.
